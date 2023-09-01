@@ -12,7 +12,6 @@ function sendMessage(senderId) {
   updateMessages();
 }
 
-
 function updateMessages() {
   let messagesElement = document.getElementById("messages");
   messagesElement.innerHTML = "";
@@ -31,15 +30,6 @@ document.getElementById("send2").addEventListener("click", function() {
   sendMessage("sender2");
 });
 
-messages.push({
-  sender: "Sender 1",
-  message: "Hello, world!"
-});
-messages.push({
-  sender: "Sender 2",
-  message: "Hi!"
-});
-
 function saveMessages() {
   localStorage.setItem("messages", JSON.stringify(messages));
 }
@@ -48,9 +38,9 @@ function loadMessages() {
   let messagesString = localStorage.getItem("messages");
   if (messagesString) {
     messages = JSON.parse(messagesString);
+    updateMessages();
   }
 }
-
 
 window.addEventListener("beforeunload", saveMessages);
 
